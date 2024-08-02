@@ -48,7 +48,8 @@ border-radius: 50%;
 border: 1px solid black;
 position: relative;
 right:52px;
-bottom:13px;
+bottom:-12px;
+z-index: 5;
 }
 .new-width{
   height: 282px !important;
@@ -534,6 +535,7 @@ line-height: 100%;
   
 }
 .guess_answer_dual{
+  display: flex;
   z-index: 3;
 }
 .guess_answer_dual textarea::placeholder{
@@ -589,6 +591,9 @@ overflow: hidden;
   line-height: 120%; /* 24px */
 text-align: left;
 
+}
+@media (max-width:399px) {
+  
 }
 body{
   background: var(--Dark-Dark--100, #0E1928);
