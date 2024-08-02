@@ -8,10 +8,9 @@ const Landingpage = ({ skip, setskip }) => {
   const [word, setword] = useState("");
   const [right, setright] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
-  const [message, setmessage] = useState("kjdska");
+  const [message, setmessage] = useState("Wow !! that’s a tough one and I have managed something let’s see if you get it");
   const [topic, settopic] = useState("");
   const [answer, setanswer] = useState("");
-  const [emojies, setemoji] = useState("");
   const backward = () => {
     setsend(false);
     setIsEmpty(true);
@@ -125,7 +124,6 @@ const Landingpage = ({ skip, setskip }) => {
         <p className="Dual_Disclosure">Dual disclosure</p>
       </div>
       <GuessBox
-        emojies={emojies}
         isEmpty={isEmpty}
         topic={topic}
         answer={answer}

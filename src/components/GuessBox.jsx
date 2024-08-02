@@ -8,7 +8,6 @@ const GuessBox = ({
   isEmpty,
   setword,
   topic,
-  emojies,
   answer,
   forward,
   send,
@@ -16,7 +15,6 @@ const GuessBox = ({
   word,
 }) => {
   const textareaRef = useRef(null);
-  const emojis = emojies.split(" ");
 
   const handleFocus = () => {
     if (textareaRef.current) {
@@ -88,12 +86,8 @@ const GuessBox = ({
         {!send && <img src={Lock_i} className="Lock_img" />}
       </div>
       <div className="guess_symbol_dual">
-        <div className="emoji-container">
-          {emojis.map((emoji, index) => (
-            <span key={index} className="emoji">
-              {emoji}
-            </span>
-          ))}
+        <div className="emoji-container_dual">
+          
         </div>
       </div>
       <div className="guess_answer_dual">

@@ -96,7 +96,7 @@ html {
   align-items: center;
 }
 
-.emoji-container {
+.emoji-container_dual {
   max-width: 355px;
   flex-wrap: wrap;
   display: flex;
@@ -497,6 +497,7 @@ html {
 
 
 .User_text_dual {
+  padding-right: 8px;
   padding-left: 3px;
   color: var(--Neutral-Light, #fff);
   font-feature-settings: "clig" off, "liga" off;
