@@ -139,14 +139,14 @@ const Landingpage = ({ skip, setskip }) => {
         </div>
       )}
       
-        <button
+        {!send && <button
           className="SpotPage_Submit"
           onClick={() => {
             forward();
           }}
         >
           <p style={style}>Reveal</p>
-        </button>
+        </button>}
     </div>
   );
 };
