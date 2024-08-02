@@ -50,7 +50,14 @@ position: relative;
 right:52px;
 bottom:13px;
 }
+.new-width{
+  height: 282px !important;
+}
+.Lock_img{
+  margin-right: 13px;
+}
 .Lie_Information_dual {
+  margin-left: 33px;
   margin-bottom: -10px;
   gap:9px;
   width: 88vw;
@@ -454,8 +461,8 @@ outline: none;
   
 }
 .User_text_dual_2 {
-  height: 100%;
-  width: 100%;
+  height: 68px;
+  width: 209px;
   padding-left: 3px;
   color: var(--Neutral-Light, #fff);
   font-feature-settings: "clig" off, "liga" off;
@@ -487,8 +494,8 @@ line-height: 120%; /* 16.8px */
 }
 .User_picture_dual_2 img {
   padding-left: 4px;
-  width: 14vw;
-  height: 5.85vh;
+  width: 56px;
+  height: 2.8rem;
 }
 .app_container_dual {
   display: flex;
@@ -539,7 +546,20 @@ line-height: 100%;
   font-weight: 400;
   line-height: 120%;
 }
+.border_op{
+  border-radius: var(--large, 12px);
+border: 1px solid var(--Dark-Dark--100, #0E1928);
+background: var(--Light-Light--100, #FFF);
+box-shadow: 0px 2px 0px 0px #000;
+}
+.guess_answer_dual textarea:focus{
+  border-radius: var(--large, 12px);
+border: 1px solid var(--Dark-Dark--100, #0E1928);
+background: var(--Light-Light--100, #FFF);
+box-shadow: 0px 2px 0px 0px #000;
+}
 .guess_answer_dual textarea{
+  padding-right: 55px !important;
    color: var(--Dark-Dark--100, #0E1928);
 font-feature-settings: 'clig' off, 'liga' off;
 font-family: Gilroy;

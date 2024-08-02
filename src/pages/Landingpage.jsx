@@ -22,34 +22,6 @@ const Landingpage = ({ skip, setskip }) => {
     setShowConfetti(true);
     setTimeout(() => setShowConfetti(false), 5000);
   };
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const url = "https://vyld-cb-dev-api.vyld.io/api/v1/activity-games/game";
-    const params = new URLSearchParams({
-      activityId: urlParams.get("activityId"),
-    });
-    fetch(`${url}?${params}`, {
-      method: "GET",
-      headers: {},
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        const Data_coming = data.data;
-        console.log(Data_coming);
-        setmessage(Data_coming.message);
-        settopic(Data_coming.reqD[0].topicArea);
-        setanswer(Data_coming.reqD[1].topic);
-        setemoji(Data_coming.reqD[2].Emoji);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  }, []);
   const [isEmpty, setIsEmpty] = useState(true);
   const [style, setstyle] = useState({});
   const [send, setsend] = useState(false);
@@ -59,73 +31,12 @@ const Landingpage = ({ skip, setskip }) => {
       triggerConfetti();
     }
   }, [right, send]);
- 
-  const stopWords = ['the', 'a', 'an', 'in', 'at', 'to'];
-  const abbreviations = {
-    'dr': 'doctor',
-    'mr': 'mister',
-    'mrs': 'misses',
-    'st': 'street',
-    'jr': 'junior',
-    'sr': 'senior'
-  };
-  const normalizeString = str => {
-    return str
-      .toLowerCase()
-      .replace(/[^a-zA-Z0-9\s]/gi, '') 
-      .split(' ')
-      .filter(word => !stopWords.includes(word) && word) 
-      .map(word => abbreviations[word] || word)
-  };
-
-  const compareMovieTitles = (userInput, correctAnswer) => {
-    const normalizedUserInput = normalizeString(userInput);
-    const normalizedCorrectAnswer = normalizeString(correctAnswer);
-  
-    if (normalizedUserInput.join(' ') === normalizedCorrectAnswer.join(' ')) {
-      return true;
-    }
-
-    return normalizedUserInput.every((userWord, index) => {
-      if (index >= normalizedCorrectAnswer.length) return false; 
-      const correctWord = normalizedCorrectAnswer[index];
-      const similarity = stringSimilarity.compareTwoStrings(userWord, correctWord);
-      console.log(`Comparing "${userWord}" with "${correctWord}": Similarity = ${similarity}`);
-      return similarity > 0.7;
-    });
-  };
   const forward = () => {
-    // console.log("forward");
+    console.log("forward");
     if (!isEmpty) {
-      if (compareMovieTitles(word.toLowerCase(),answer.toLowerCase())) {
-        setright(true);
-      } else {
-        setright(false);
-      }
+      
       setsend(true);
     }
-    const data = {
-      reqD: [{ topicArea: topic }, { topic: answer }, { Emoji: emojies }],
-      message: message,
-      isCorrect: right,
-    };
-    const staging_url = "https://vyld-cb-dev-api.vyld.io";
-    const url = `${staging_url}/api/v1/activity-games/game-response`;
-
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        // console.log(result);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
   };
 
   useEffect(() => {
@@ -205,7 +116,7 @@ const Landingpage = ({ skip, setskip }) => {
       )}
       <div className="heading_above_dual">
         <p className="you_got_a_dual">You Got a</p>
-        <p className="Dual_Disclosure">Emoji charades</p>
+        <p className="Dual_Disclosure">Dual disclosure</p>
       </div>
       <GuessBox
         emojies={emojies}
