@@ -97,8 +97,9 @@ const GuessBox = ({setIsEmpty, isEmpty ,setword ,topic ,emojies, answer, forward
         enterKeyHint="done"
         placeholder="Type answer here"
         readOnly={send}
+        className={`${send?"border_op":""}`}
       ></textarea>
-      <img src={Profile2} className={`Profile2_dual ${send?"border_op":""}`}/>
+      <img src={Profile2} className={`Profile2_dual `}/>
       </div>
       {!send && <div className="guessbox_text_d2">
         <p>Answers are revealed when you both answer</p>

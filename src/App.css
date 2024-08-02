@@ -76,7 +76,7 @@ z-index: 5;
  margin-bottom: -10px;
   gap:9px;
  width: 319px;
-  height: 8vh;
+  height: 10vh;
   flex-shrink: 0;
   border-radius: var(--large, 12px);
   background: var(--Dark-Dark--100, #0E1928);
@@ -549,6 +549,8 @@ line-height: 100%;
 }
 .border_op{
   border-radius: var(--large, 12px);
+  display: flex;
+
 border: 1px solid var(--Dark-Dark--100, #0E1928);
 background: var(--Light-Light--100, #FFF);
 box-shadow: 0px 2px 0px 0px #000;
@@ -560,6 +562,7 @@ background: var(--Light-Light--100, #FFF);
 box-shadow: 0px 2px 0px 0px #000;
 }
 .guess_answer_dual textarea{
+  
   padding-right: 55px !important;
    color: var(--Dark-Dark--100, #0E1928);
 font-feature-settings: 'clig' off, 'liga' off;
