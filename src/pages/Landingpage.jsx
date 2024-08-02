@@ -3,7 +3,6 @@ import GuessBox from "../components/GuessBox";
 import { useState, useEffect } from "react";
 import Confetti from "react-confetti";
 import profile from "../assets/Profile.png";
-import stringSimilarity from 'string-similarity';
 
 const Landingpage = ({ skip, setskip }) => {
   const [word, setword] = useState("");
@@ -13,7 +12,6 @@ const Landingpage = ({ skip, setskip }) => {
   const [topic, settopic] = useState("");
   const [answer, setanswer] = useState("");
   const [emojies, setemoji] = useState("");
-  const [data_it, setdata_it] = useState(null);
   const backward = () => {
     setsend(false);
     setIsEmpty(true);
@@ -34,7 +32,6 @@ const Landingpage = ({ skip, setskip }) => {
   const forward = () => {
     console.log("forward");
     if (!isEmpty) {
-      
       setsend(true);
     }
   };
@@ -51,10 +48,19 @@ const Landingpage = ({ skip, setskip }) => {
       {showConfetti && <Confetti />}
       {
         <div className="background_svg_dual">
-         <svg width="360" height="180" viewBox="0 0 360 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M388 -167C359.667 -165.333 238.407 19.8627 281 -7.5C363.5 -60.5 381.5 10.5 332.5 38.5C268 75.3571 157.755 170 232 170C281 170 263 67.5 184.5 89.5C106 111.5 62.613 155.588 39.5 102.5C7.5 29 118.5 -18 65 -93C15.3856 -162.553 -12 -102 -12 -69.5" stroke="#1D2939" stroke-width="19"/>
-</svg>
-
+          <svg
+            width="360"
+            height="180"
+            viewBox="0 0 360 180"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M388 -167C359.667 -165.333 238.407 19.8627 281 -7.5C363.5 -60.5 381.5 10.5 332.5 38.5C268 75.3571 157.755 170 232 170C281 170 263 67.5 184.5 89.5C106 111.5 62.613 155.588 39.5 102.5C7.5 29 118.5 -18 65 -93C15.3856 -162.553 -12 -102 -12 -69.5"
+              stroke="#1D2939"
+              stroke-width="19"
+            />
+          </svg>
         </div>
       }
       {!send ? (
@@ -138,15 +144,17 @@ const Landingpage = ({ skip, setskip }) => {
           <div className="User_text_dual">{message}</div>
         </div>
       )}
-      
-        {!send && <button
+
+      {!send && (
+        <button
           className="SpotPage_Submit"
           onClick={() => {
             forward();
           }}
         >
           <p style={style}>Reveal</p>
-        </button>}
+        </button>
+      )}
     </div>
   );
 };
