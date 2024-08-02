@@ -73,7 +73,7 @@ const GuessBox = ({setIsEmpty, isEmpty ,setword ,topic ,emojies, answer, forward
           <div className="User_picture_dual_2">
             <img src={Profile} alt="User" />
           </div>
-          <div className={`User_text_dual_2 ${!send? 'backgorund_blur_d':''}`}>{message}</div>
+          <div className={`User_text_dual_2 ${!send? 'backgorund_blur_d':''}`}>Every day I move pieces of furniture closer to the positions that I want them to be in.</div>
           {!send &&<img src={Lock_i} className="Lock_img"/>}
         </div>
       <div className="guess_symbol_dual"> 
