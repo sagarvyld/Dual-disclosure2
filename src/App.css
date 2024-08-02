@@ -604,6 +604,7 @@ html {
 }
 
 .guess_answer_dual textarea::placeholder {
+  padding-top: 10px;
   color: var(--Dark-Dark--50, #79889D);
   font-feature-settings: 'clig' off, 'liga' off;
   font-family: Gilroy;

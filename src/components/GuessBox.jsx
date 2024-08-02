@@ -99,7 +99,7 @@ const GuessBox = ({
           onKeyPress={handleKeyPress}
           inputMode="text"
           enterKeyHint="done"
-          placeholder="Type answer here"
+          placeholder="Add your answer here"
           readOnly={send}
           className={`${send ? "border_op" : ""}`}
         ></textarea>
