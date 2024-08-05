@@ -64,7 +64,7 @@ const Landingpage = ({ skip, setskip }) => {
     console.log("forward");
     if (!isEmpty) {
       const matching=(stringSimilarity.compareTwoStrings(word.toLowerCase(),Answer.toLowerCase()));
-      if (matching>0.78) {
+      if (matching>0.8) {
         setright(true);
       } else {
         setright(false);
