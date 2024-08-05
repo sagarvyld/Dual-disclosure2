@@ -12,8 +12,6 @@ const Landingpage = ({ skip, setskip }) => {
   const [message, setmessage] = useState(
     "Wow !! that’s a tough one and I have managed something let’s see if you get it"
   );
-  const [topic, settopic] = useState("");
-  const [answer, setanswer] = useState("");
   const [Question, setQuestion] = useState("");
   const [Answer, setAnswer] = useState("");
   const backward = () => {
@@ -173,8 +171,6 @@ const Landingpage = ({ skip, setskip }) => {
         Answer={Answer}
         Question={Question}
         isEmpty={isEmpty}
-        topic={topic}
-        answer={answer}
         send={send}
         forward={forward}
         setword={setword}

@@ -7,8 +7,6 @@ const GuessBox = ({
   setIsEmpty,
   isEmpty,
   setword,
-  topic,
-  answer,
   forward,
   send,
   right,
