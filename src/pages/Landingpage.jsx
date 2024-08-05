@@ -2,18 +2,20 @@ import React from "react";
 import GuessBox from "../components/GuessBox";
 import { useState, useEffect } from "react";
 import Confetti from "react-confetti";
-import stringSimilarity from 'string-similarity';
+import stringSimilarity from "string-similarity";
 import profile from "../assets/Profile.png";
 
 const Landingpage = ({ skip, setskip }) => {
   const [word, setword] = useState("");
   const [right, setright] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
-  const [message, setmessage] = useState("Wow !! that’s a tough one and I have managed something let’s see if you get it");
+  const [message, setmessage] = useState(
+    "Wow !! that’s a tough one and I have managed something let’s see if you get it"
+  );
   const [topic, settopic] = useState("");
   const [answer, setanswer] = useState("");
-  const [Question,setQuestion]=useState("");
-  const [Answer,setAnswer]=useState("");
+  const [Question, setQuestion] = useState("");
+  const [Answer, setAnswer] = useState("");
   const backward = () => {
     setsend(false);
     setIsEmpty(true);
@@ -43,8 +45,7 @@ const Landingpage = ({ skip, setskip }) => {
         const Data_coming = data.data;
         setQuestion(Data_coming.reqD[0].DCQues);
         setAnswer(Data_coming.reqD[0].DCSenAns);
-       setmessage(Data_coming.message);
-       
+        setmessage(Data_coming.message);
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -63,8 +64,11 @@ const Landingpage = ({ skip, setskip }) => {
   const forward = () => {
     console.log("forward");
     if (!isEmpty) {
-      const matching=(stringSimilarity.compareTwoStrings(word.toLowerCase(),Answer.toLowerCase()));
-      if (matching>0.8) {
+      const matching = stringSimilarity.compareTwoStrings(
+        word.toLowerCase(),
+        Answer.toLowerCase()
+      );
+      if (matching > 0.8) {
         setright(true);
       } else {
         setright(false);
@@ -72,11 +76,11 @@ const Landingpage = ({ skip, setskip }) => {
       setsend(true);
     }
   };
-  useEffect(()=>{
-    if(!send){
+  useEffect(() => {
+    if (!send) {
       setword("");
     }
-  },[send])
+  }, [send]);
   useEffect(() => {
     if (isEmpty) {
       setstyle({ opacity: 0.5 });
@@ -166,8 +170,8 @@ const Landingpage = ({ skip, setskip }) => {
         <p className="Dual_Disclosure">Dual disclosure</p>
       </div>
       <GuessBox
-      Answer={Answer}
-      Question={Question}
+        Answer={Answer}
+        Question={Question}
         isEmpty={isEmpty}
         topic={topic}
         answer={answer}

@@ -73,22 +73,18 @@ const GuessBox = ({
           </svg>
         </div>
       </div>
-      <div className="guess_text_dual">
-          {Question}
-      </div>
+      <div className="guess_text_dual">{Question}</div>
       <div className="Lie_Information_dual_2">
         <div className="User_picture_dual_2">
           <img src={Profile} alt="User" />
         </div>
         <div className={`User_text_dual_2 ${!send ? "backgorund_blur_d" : ""}`}>
-         {Answer}
+          {Answer}
         </div>
         {!send && <img src={Lock_i} className="Lock_img" />}
       </div>
       <div className="guess_symbol_dual">
-        <div className="emoji-container_dual">
-          
-        </div>
+        <div className="emoji-container_dual"></div>
       </div>
       <div className="guess_answer_dual">
         <textarea
