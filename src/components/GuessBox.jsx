@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useRef } from "react";
 import Lock_i from "../assets/Lock.png";
 import Profile from "../assets/Profile.png";
@@ -13,6 +13,8 @@ const GuessBox = ({
   send,
   right,
   word,
+  Question,
+  Answer,
 }) => {
   const textareaRef = useRef(null);
 
@@ -22,7 +24,6 @@ const GuessBox = ({
       textareaRef.current.setAttribute("enterkeyhint", "done");
     }
   };
-
   const handleBlur = () => {
     if (textareaRef.current) {
       textareaRef.current.removeAttribute("inputmode");
@@ -73,15 +74,14 @@ const GuessBox = ({
         </div>
       </div>
       <div className="guess_text_dual">
-        Most random way that you have entertained yourself in the past week?
+          {Question}
       </div>
       <div className="Lie_Information_dual_2">
         <div className="User_picture_dual_2">
           <img src={Profile} alt="User" />
         </div>
         <div className={`User_text_dual_2 ${!send ? "backgorund_blur_d" : ""}`}>
-          Every day I move pieces of furniture closer to the positions that I
-          want them to be in.
+         {Answer}
         </div>
         {!send && <img src={Lock_i} className="Lock_img" />}
       </div>

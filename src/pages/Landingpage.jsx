@@ -2,6 +2,7 @@ import React from "react";
 import GuessBox from "../components/GuessBox";
 import { useState, useEffect } from "react";
 import Confetti from "react-confetti";
+import stringSimilarity from 'string-similarity';
 import profile from "../assets/Profile.png";
 
 const Landingpage = ({ skip, setskip }) => {
@@ -11,6 +12,8 @@ const Landingpage = ({ skip, setskip }) => {
   const [message, setmessage] = useState("Wow !! that’s a tough one and I have managed something let’s see if you get it");
   const [topic, settopic] = useState("");
   const [answer, setanswer] = useState("");
+  const [Question,setQuestion]=useState("");
+  const [Answer,setAnswer]=useState("");
   const backward = () => {
     setsend(false);
     setIsEmpty(true);
@@ -19,6 +22,35 @@ const Landingpage = ({ skip, setskip }) => {
     setShowConfetti(true);
     setTimeout(() => setShowConfetti(false), 5000);
   };
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const url = "https://vyld-cb-dev-api.vyld.io/api/v1/activity-games/game";
+    const params = new URLSearchParams({
+      activityId: urlParams.get("activityId"),
+    });
+    fetch(`${url}?${params}`, {
+      method: "GET",
+      headers: {},
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        const Data_coming = data.data;
+        setQuestion(Data_coming.reqD[0].DCQues);
+        setAnswer(Data_coming.reqD[0].DCSenAns);
+       setmessage(Data_coming.message);
+       
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, []);
+
   const [isEmpty, setIsEmpty] = useState(true);
   const [style, setstyle] = useState({});
   const [send, setsend] = useState(false);
@@ -31,10 +63,20 @@ const Landingpage = ({ skip, setskip }) => {
   const forward = () => {
     console.log("forward");
     if (!isEmpty) {
+      const matching=(stringSimilarity.compareTwoStrings(word.toLowerCase(),Answer.toLowerCase()));
+      if (matching>0.78) {
+        setright(true);
+      } else {
+        setright(false);
+      }
       setsend(true);
     }
   };
-
+  useEffect(()=>{
+    if(!send){
+      setword("");
+    }
+  },[send])
   useEffect(() => {
     if (isEmpty) {
       setstyle({ opacity: 0.5 });
@@ -124,6 +166,8 @@ const Landingpage = ({ skip, setskip }) => {
         <p className="Dual_Disclosure">Dual disclosure</p>
       </div>
       <GuessBox
+      Answer={Answer}
+      Question={Question}
         isEmpty={isEmpty}
         topic={topic}
         answer={answer}
@@ -131,7 +175,7 @@ const Landingpage = ({ skip, setskip }) => {
         forward={forward}
         setword={setword}
         setIsEmpty={setIsEmpty}
-        right={right}
+        right={setright}
         word={word}
       />
       {!send && message !== "" && (
