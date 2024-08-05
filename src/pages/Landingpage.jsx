@@ -60,7 +60,7 @@ const Landingpage = ({ skip, setskip }) => {
     }
   }, [right, send]);
   const forward = () => {
-    console.log("forward");
+    // console.log("forward");
     if (!isEmpty) {
       const matching = stringSimilarity.compareTwoStrings(
         word.toLowerCase(),
