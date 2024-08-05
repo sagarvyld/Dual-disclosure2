@@ -131,7 +131,8 @@ html {
 
 .skip_container {
   position: absolute;
-  margin-left: -27px;
+  left:0px;
+
 }
 
 .the_skip_box {
