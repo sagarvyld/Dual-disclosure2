@@ -128,7 +128,16 @@ html {
   justify-content: space-between;
   top: 30px;
 }
-
+@media (max-width:390px) {
+  .guess_main_container_dual{
+    padding-left: 20px;
+  }
+}
+@media (max-width:373px) {
+  .guess_main_container_dual{
+    padding-left: 31px;
+  }
+}
 .skip_container {
   position: absolute;
   left:0px;
