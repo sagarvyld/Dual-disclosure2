@@ -71,7 +71,7 @@ const Landingpage = ({ skip, setskip }) => {
       } else {
         setright(false);
       }
-      setsend(true);
+      window.location.href = 'https://link.wyb.social';
     }
   };
   useEffect(() => {
